@@ -8,11 +8,11 @@ To do this add into pom.xml
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <h4><exclusions>
+            <exclusions>
                 <exclusion>
                     <groupId>ch.qos.logback</groupId>
                     <artifactId>logback-classic</artifactId>
-                </exclusion></h4>
+                </exclusion>
             </exclusions>
         </dependency>
 
