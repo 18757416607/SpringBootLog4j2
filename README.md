@@ -50,7 +50,7 @@ To do this add into pom.xml
  
  <h5>log4j2.xml</h5>
  
-<?xml version="1.0" encoding="UTF-8"?>
+<pre><?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Properties>
         <Property name="logPath">logs</Property>
@@ -70,7 +70,7 @@ To do this add into pom.xml
             <AppenderRef ref="fileAppender"/>
         </Root>
     </Loggers>
-</Configuration>
+</Configuration></pre>
 
 
 <h5>application.properties</h5>
