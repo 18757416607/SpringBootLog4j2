@@ -50,7 +50,6 @@ To do this add into pom.xml
  
  <h5>log4j2.xml</h5>
  
-<pre>
         <?xml version="1.0" encoding="UTF-8"?>
         <Configuration status="WARN">
             <Properties>
@@ -72,8 +71,6 @@ To do this add into pom.xml
                 </Root>
             </Loggers>
         </Configuration>
-</pre>
-
 
 <h5>application.properties</h5>
 
