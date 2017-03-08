@@ -50,36 +50,40 @@ To do this add into pom.xml
  
  <h5>log4j2.xml</h5>
  
-<pre><?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
-    <Properties>
-        <Property name="logPath">logs</Property>
-        <Property name="patternLayout">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
-    </Properties>
-    <Appenders>
-        <Console name="consoleAppender" target="SYSTEM_OUT">
-            <PatternLayout pattern="${patternLayout}" />
-        </Console>
-        <File name="fileAppender" fileName="${logPath}/app_log.log" >
-            <PatternLayout pattern="${patternLayout}" />
-        </File>
-    </Appenders>
-    <Loggers>
-        <Root level="info">
-            <AppenderRef ref="consoleAppender"/>
-            <AppenderRef ref="fileAppender"/>
-        </Root>
-    </Loggers>
-</Configuration></pre>
+<pre>
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Configuration status="WARN">
+            <Properties>
+                <Property name="logPath">logs</Property>
+                <Property name="patternLayout">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+            </Properties>
+            <Appenders>
+                <Console name="consoleAppender" target="SYSTEM_OUT">
+                    <PatternLayout pattern="${patternLayout}" />
+                </Console>
+                <File name="fileAppender" fileName="${logPath}/app_log.log" >
+                    <PatternLayout pattern="${patternLayout}" />
+                </File>
+            </Appenders>
+            <Loggers>
+                <Root level="info">
+                    <AppenderRef ref="consoleAppender"/>
+                    <AppenderRef ref="fileAppender"/>
+                </Root>
+            </Loggers>
+        </Configuration>
+</pre>
 
 
 <h5>application.properties</h5>
 
-<pre>logging.level.org.springframework.web=INFO
-logging.level.guru.springframework.blogs.controllers=INFO
-logging.level.org.hibernate=ERROR
-logging.file=logs/spring-boot-logging.log
-log4j.logger.org.thymeleaf=DEBUG</pre>
+<pre>
+        logging.level.org.springframework.web=INFO
+        logging.level.guru.springframework.blogs.controllers=INFO
+        logging.level.org.hibernate=ERROR
+        logging.file=logs/spring-boot-logging.log
+        log4j.logger.org.thymeleaf=DEBUG
+</pre>
 
 
 <h3>NOTICE: Can be troubles with versions</h3>
