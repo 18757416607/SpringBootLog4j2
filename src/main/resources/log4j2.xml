@@ -2,76 +2,32 @@
 <Configuration status="WARN">
     <Properties>
         <Property name="logPath">logs</Property>
-        <Property name="patternLayout">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="consolePatternLayout">%highlight{[%-5level] %d{yyyy-MM-dd HH:mm:ss} [%t] %c{10} - %msg%n}{FATAL=red blink, ERROR=red, WARN=yellow, INFO=white, DEBUG=green bold, TRACE=blue}
+        </Property>
+        <Property name="filePatternLayout">[%-5level] %d{yyyy-MM-dd HH:mm:ss} [%t] %c{10} - %msg%n</Property>
     </Properties>
     <Appenders>
         <Console name="consoleAppender" target="SYSTEM_OUT">
-            <PatternLayout pattern="${patternLayout}" />
+            <PatternLayout pattern="${consolePatternLayout}"/>
         </Console>
-        <File name="fileAppender" fileName="${logPath}/app_log.log" >
-            <PatternLayout pattern="${patternLayout}" />
-        </File>
+        <RollingRandomAccessFile name="rollingRandomAccessFileAppender"
+                     fileName="${logPath}/rollingfile.log"
+                     filePattern="${logPath}/rollingfile-%d{yyyy-MM-dd-hh-mm}.%i.log">
+            <PatternLayout pattern="${filePatternLayout}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="3 KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="3"/>
+        </RollingRandomAccessFile>
     </Appenders>
-    <Loggers>
-        <Root level="info">
+    <Loggers >
+        <AsyncLogger name="com.buta.roman" level="info">
+            <AppenderRef ref="rollingRandomAccessFileAppender" level="info"/>
+        </AsyncLogger>
+        <AsyncRoot level="info">
             <AppenderRef ref="consoleAppender"/>
-            <AppenderRef ref="fileAppender"/>
-        </Root>
+        </AsyncRoot>
     </Loggers>
 </Configuration>
-<!--<?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
-    <Appenders>
-        <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-        </Console>
-    </Appenders>
-    <Loggers>
-        <Root level="info">
-            <AppenderRef ref="Console"/>
-        </Root>
-    </Loggers>
-</Configuration>-->
-<!--
-<?xml version="1.0" encoding="UTF-8"?>
-<Configuration monitorInterval="60">
-    <Properties>
-        <Property name="log-path">logs</Property>
-    </Properties>
-    <Appenders>
-        <Console name="Console-Appender" target="SYSTEM_OUT">
-            <PatternLayout>
-                <pattern>
-                    [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
-                </pattern>>
-            </PatternLayout>
-        </Console>
-        <File name="App-File-Appender" fileName="${log-path}/app_log.log" >
-            <PatternLayout>
-                <pattern>
-                    [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
-                </pattern>
-            </PatternLayout>
-        </File>
-        <File name="SpringBoot-File-Appender" fileName="${log-path}/springboot_log.log" >
-            <PatternLayout>
-                <pattern>
-                    [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
-                </pattern>
-            </PatternLayout>
-        </File>
-    </Appenders>
-    <Loggers>
-        <Logger name="org.springframework.web" level="info" additivity="false">
-            <AppenderRef ref="SpringBoot-File-Appender"/>
-            <AppenderRef ref="Console-Appender"/>
-        </Logger>
-        <Logger name="guru.springframework.blog.controllers" level="info" additivity="false">
-            <AppenderRef ref="App-File-Appender"/>
-            <AppenderRef ref="Console-Appender"/>
-        </Logger>
-        <Root>
-            <AppenderRef ref="Console-Appender"/>
-        </Root>
-    </Loggers>
-</Configuration>-->
+

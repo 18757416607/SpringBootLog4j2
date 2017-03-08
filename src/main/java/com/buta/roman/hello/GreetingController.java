@@ -19,10 +19,25 @@ public class GreetingController {
 
     @RequestMapping("/greeting")
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
-        System.out.println("****MUST LOG****");
-        LOGGER.info("*******INFO**********");
-        LOGGER.warn("*******WARN**********");
-        return new Greeting(counter.incrementAndGet(),
+        Greeting gr = new Greeting(counter.incrementAndGet(),
                 String.format(template, name));
+
+        LOGGER.info(gr.toString());
+        LOGGER.warn(gr.toString());
+        LOGGER.error(gr.toString());
+        LOGGER.debug(gr.toString());
+        LOGGER.info(gr.toString());
+        LOGGER.warn(gr.toString());
+        LOGGER.error(gr.toString());
+        LOGGER.debug(gr.toString());
+        LOGGER.info(gr.toString());
+        LOGGER.warn(gr.toString());
+        LOGGER.error(gr.toString());
+        LOGGER.debug(gr.toString());
+        LOGGER.info(gr.toString());
+        LOGGER.warn(gr.toString());
+        LOGGER.error(gr.toString());
+        LOGGER.debug(gr.toString());
+        return gr;
     }
 }
