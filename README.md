@@ -50,7 +50,7 @@ To do this add into pom.xml
  
  <h5>log4j2.xml</h5>
  
- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Properties>
         <Property name="logPath">logs</Property>
@@ -73,15 +73,13 @@ To do this add into pom.xml
 </Configuration>
 
 
-
 <h5>application.properties</h5>
 
-logging.level.org.springframework.web=INFO
+<pre>logging.level.org.springframework.web=INFO
 logging.level.guru.springframework.blogs.controllers=INFO
 logging.level.org.hibernate=ERROR
 logging.file=logs/spring-boot-logging.log
-log4j.logger.org.thymeleaf=DEBUG
-
+log4j.logger.org.thymeleaf=DEBUG</pre>
 
 
 <h3>NOTICE: Can be troubles with versions</h3>
