@@ -4,14 +4,15 @@
 
 <h3>1)Exclude default logging (logback) in SpringBoot</h3>
 To do this add into pom.xml
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
+            <h4><exclusions>
                 <exclusion>
                     <groupId>ch.qos.logback</groupId>
                     <artifactId>logback-classic</artifactId>
-                </exclusion>
+                </exclusion></h4>
             </exclusions>
         </dependency>
 
